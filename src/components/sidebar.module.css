@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw; /*---responsive---*/
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  padding: 0 1rem;
+  background-color: white;
+}
+
+p {
+  font-weight: 500;
+  font-size: 1.875rem; /*---responsive---*/
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+button em {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  font-size: 1.25rem; /*----responsive---*/
+  border: none;
+  border-radius: 3rem;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.groupname {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /*---responsive---*/
+  height: 3rem; /*---responsive---*/
+  border-radius: 100%;
+  background-color: aqua; /*---subject to change---*/
+  color: white;
+  font-size: 1.5rem; /*---responsive---*/
+  margin-right: 1rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 769px) {
+  .container {
+    width: 25vw;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  button {
+    font-size: 1rem;
+    padding: 0;
+  }
+}
