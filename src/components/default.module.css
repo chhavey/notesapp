@@ -1,7 +1,49 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 70vw;
   height: 100vh;
+  justify-content: space-around;
+}
+.img {
+  width: 55%;
+}
+
+.default {
+  padding: 5rem;
+}
+
+.heading {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+.defaultMessage,
+.encryption {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #292929;
+}
+
+.encryption {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+}
+
+.encryption .lock {
+  width: 0.875rem;
+}
+
+@media (max-width: 769px) {
+  .container {
+    display: none;
+  }
 }

@@ -8,18 +8,18 @@
   background-color: white;
 }
 
-p {
+.heading {
   font-weight: 500;
   font-size: 1.875rem; /*---responsive---*/
   letter-spacing: 0.02em;
   text-align: left;
 }
-button em {
+.createGroupBtn em {
   font-weight: 400;
   font-size: 2rem;
 }
 
-button {
+.createGroupBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,10 +71,10 @@ ul {
   .container {
     width: 25vw;
   }
-  p {
+  .heading {
     font-size: 1.5rem;
   }
-  button {
+  .createGroupBtn {
     font-size: 1rem;
     padding: 0;
   }
