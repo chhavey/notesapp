@@ -42,7 +42,7 @@
   width: 0.875rem;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
   .container {
     display: none;
   }

@@ -1,4 +1,9 @@
-.box1 {
+.container {
   display: flex;
   background-color: #f7ecdc;
+}
+
+.ds,
+.dns {
+  display: flex;
 }

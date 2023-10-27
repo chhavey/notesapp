@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./sidebar.module.css";
 
-function Sidebar() {
+function Sidebar({ groupNames, onSelectGroup }) {
   return (
     <>
       <div className={styles.container}>
@@ -9,13 +9,21 @@ function Sidebar() {
         <button className={styles.createGroupBtn}>
           <em>+</em> &nbsp; &nbsp;Create Notes group
         </button>
-        <ul>
-          <li>
-            <div className={styles.groupname}>
-              <div className={styles.icon}>C</div>
-              <div className={styles.name}>Chhavi</div>
-            </div>
-          </li>
+        <ul className={styles.ul}>
+          {groupNames.map((item) => (
+            <li key={item.id} onClick={() => onSelectGroup(item)}>
+              <div className={styles.groupname}>
+                <div className={styles.icon}>
+                  {item.name
+                    .split(" ")
+                    .slice(0, 2)
+                    .map((word) => word[0].toUpperCase())
+                    .join("")}
+                </div>
+                <div className={styles.name}>{item.name}</div>
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </>
