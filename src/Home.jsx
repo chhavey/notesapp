@@ -25,13 +25,15 @@ function Home() {
 
   const handleDialogSave = (name, color, e) => {
     const newGroup = { id: Date.now(), name, color };
-    setGroups([...groups, newGroup]);
-
-    localStorage.setItem("groups", JSON.stringify([...groups, newGroup]));
+    setGroups((prevGroups) => {
+      const updatedGroups = [...prevGroups, newGroup];
+      localStorage.setItem("groups", JSON.stringify(updatedGroups));
+      return updatedGroups;
+    });
   };
 
   const updateViewport = () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 769) {
       setViewport("mobile");
     } else {
       setViewport("desktop");
@@ -41,9 +43,12 @@ function Home() {
   useEffect(() => {
     updateViewport();
     window.addEventListener("resize", updateViewport);
-
-    const storedGroups = JSON.parse(localStorage.getItem("groups") || "[]");
-    setGroups(storedGroups);
+    try {
+      const storedGroups = JSON.parse(localStorage.getItem("groups") || "[]");
+      setGroups(storedGroups);
+    } catch (error) {
+      console.error("Error loading groups from local storage:", error);
+    }
     return () => {
       window.removeEventListener("resize", updateViewport);
     };
@@ -53,7 +58,7 @@ function Home() {
     <div>
       <div className={styles.container}>
         {viewport === "desktop" ? (
-          <div>
+          <div className={styles.desktop}>
             {selectedGroup ? (
               <div className={styles.ds}>
                 <Sidebar
@@ -75,15 +80,19 @@ function Home() {
             )}
           </div>
         ) : (
-          <div>
+          <div className={styles.mobile}>
             {selectedGroup ? (
-              <Notes />
+              <div className={styles.ms}>
+                <Notes />
+              </div>
             ) : (
-              <Sidebar
-                groupNames={groups}
-                onSelectGroup={onSelectGroup}
-                openDialog={openDialog}
-              />
+              <div className={styles.ms}>
+                <Sidebar
+                  groupNames={groups}
+                  onSelectGroup={onSelectGroup}
+                  openDialog={openDialog}
+                />
+              </div>
             )}
           </div>
         )}

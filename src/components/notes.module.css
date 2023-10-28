@@ -1,0 +1,11 @@
+.container {
+  background-color: #f7ecdc;
+  display: flex;
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}

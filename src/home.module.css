@@ -1,13 +1,9 @@
 .container {
-  display: flex;
-  background-color: #f7ecdc;
+  box-sizing: border-box;
 }
-
 .ds,
-.dns {
+.dns,
+.ms,
+.mns {
   display: flex;
-}
-
-Popup {
-  border: 5px solid red;
 }

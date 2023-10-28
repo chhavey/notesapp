@@ -1,11 +1,11 @@
 .container {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70vw;
   height: 100vh;
   justify-content: space-around;
+  background-color: #f7ecdc;
 }
 .img {
   width: 55%;
@@ -13,6 +13,10 @@
 
 .default {
   padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .heading {
@@ -42,8 +46,8 @@
   width: 0.875rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .container {
-    display: none;
+    display: flex;
   }
 }

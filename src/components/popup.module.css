@@ -5,9 +5,9 @@
   align-items: center;
   background: #2f2f2fbf;
   position: fixed;
+  top: 0;
   height: 100vh;
   width: 100vw;
-  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -20,7 +20,8 @@
   border: none;
   border-radius: 0.25rem;
   padding: 2rem;
-  margin: 0 2rem;
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 .heading {
