@@ -3,19 +3,31 @@ import Default from "./components/Default";
 import Sidebar from "./components/Sidebar";
 import styles from "./home.module.css";
 import Notes from "./components/Notes";
+import Popup from "./components/Popup";
 
 function Home() {
   const [viewport, setViewport] = useState("desktop");
   const [selectedGroup, setSelectedGroup] = useState(null);
-
-  const items = [
-    { id: 1, name: "Item 1" },
-    { id: 2, name: "Item 2" },
-    { id: 3, name: "Item 3" },
-  ];
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [groups, setGroups] = useState([]);
 
   const onSelectGroup = (item) => {
     setSelectedGroup(item);
+  };
+
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  const handleDialogSave = (name, color, e) => {
+    const newGroup = { id: Date.now(), name, color };
+    setGroups([...groups, newGroup]);
+
+    localStorage.setItem("groups", JSON.stringify([...groups, newGroup]));
   };
 
   const updateViewport = () => {
@@ -29,6 +41,9 @@ function Home() {
   useEffect(() => {
     updateViewport();
     window.addEventListener("resize", updateViewport);
+
+    const storedGroups = JSON.parse(localStorage.getItem("groups") || "[]");
+    setGroups(storedGroups);
     return () => {
       window.removeEventListener("resize", updateViewport);
     };
@@ -41,12 +56,20 @@ function Home() {
           <div>
             {selectedGroup ? (
               <div className={styles.ds}>
-                <Sidebar groupNames={items} onSelectGroup={onSelectGroup} />
+                <Sidebar
+                  groupNames={groups}
+                  onSelectGroup={onSelectGroup}
+                  openDialog={openDialog}
+                />
                 <Notes />
               </div>
             ) : (
               <div className={styles.dns}>
-                <Sidebar groupNames={items} onSelectGroup={onSelectGroup} />
+                <Sidebar
+                  groupNames={groups}
+                  onSelectGroup={onSelectGroup}
+                  openDialog={openDialog}
+                />
                 <Default />
               </div>
             )}
@@ -56,11 +79,18 @@ function Home() {
             {selectedGroup ? (
               <Notes />
             ) : (
-              <Sidebar groupNames={items} onSelectGroup={onSelectGroup} />
+              <Sidebar
+                groupNames={groups}
+                onSelectGroup={onSelectGroup}
+                openDialog={openDialog}
+              />
             )}
           </div>
         )}
       </div>
+      {isDialogOpen && (
+        <Popup handleDialogSave={handleDialogSave} closeDialog={closeDialog} />
+      )}
     </div>
   );
 }

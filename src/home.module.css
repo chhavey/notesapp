@@ -7,3 +7,7 @@
 .dns {
   display: flex;
 }
+
+Popup {
+  border: 5px solid red;
+}
