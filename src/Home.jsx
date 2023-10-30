@@ -66,7 +66,7 @@ function Home() {
                   onSelectGroup={onSelectGroup}
                   openDialog={openDialog}
                 />
-                <Notes />
+                <Notes selectedGroup={selectedGroup} />
               </div>
             ) : (
               <div className={styles.dns}>
@@ -83,7 +83,7 @@ function Home() {
           <div className={styles.mobile}>
             {selectedGroup ? (
               <div className={styles.ms}>
-                <Notes />
+                <Notes selectedGroup={selectedGroup} />
               </div>
             ) : (
               <div className={styles.ms}>

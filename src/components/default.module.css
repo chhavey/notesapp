@@ -49,5 +49,6 @@
 @media (min-width: 769px) {
   .container {
     display: flex;
+    width: 75vw;
   }
 }

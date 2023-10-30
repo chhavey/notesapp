@@ -1,11 +1,92 @@
 .container {
   background-color: #f7ecdc;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100vh;
+  width: 75vw;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background: #e8e8e8;
+  padding: 0.75rem 1rem;
+}
+
+.header img {
+  display: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  color: white;
+  font-size: 1.25rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin-right: 1rem;
+  background-color: #b38bfa; /*---will be removed---*/
+}
+
+.heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+
+.notesSection {
+  border: 1px solid red;
+  height: 100%;
+}
+.enterNotesSection {
+  display: flex;
+  justify-content: center;
+  background: #e8e8e8;
+  position: relative;
+}
+
+.enterNotes {
+  margin: 1rem 1.5rem;
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-align: left;
+  resize: none;
+}
+.enterNotes::placeholder {
+  color: rgba(154, 154, 154, 1);
+}
+
+.enterNotesSection img {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  width: 1.75rem;
 }
 
 @media (max-width: 768px) {
   .container {
     width: 100%;
+  }
+
+  .header img {
+    display: block;
+  }
+
+  .icon {
+    margin-left: 1rem;
   }
 }
