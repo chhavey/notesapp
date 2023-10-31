@@ -3,10 +3,9 @@ import styles from "./notes.module.css";
 import back from "../assets/back-arrow.png";
 import send from "../assets/send.png";
 
-function Notes({ selectedGroup }) {
+function Notes({ selectedGroup, goBack }) {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
-
   useEffect(() => {
     const storedNotes = localStorage.getItem(selectedGroup?.name);
     setNotes(storedNotes ? JSON.parse(storedNotes) : []);
@@ -18,9 +17,13 @@ function Notes({ selectedGroup }) {
     }
   }, [selectedGroup, notes]);
 
-  const handleEnterKey = (e) => {
+  const handleKeyDown = (e) => {
     if (newNote) {
-      if (e.key === "Enter" && newNote.trim() !== "") {
+      if (e.key === "Enter" && e.shiftKey) {
+        e.preventDefault();
+        setNewNote((prevNote) => prevNote + "\n");
+      } else if (e.key === "Enter" && newNote.trim() !== "") {
+        e.preventDefault();
         saveNote(newNote);
         setNewNote("");
       }
@@ -30,7 +33,16 @@ function Notes({ selectedGroup }) {
   const saveNote = (newNote) => {
     const note = {
       text: newNote,
-      date: new Date().toLocaleString(),
+      time: new Date().toLocaleString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      }),
+      date: new Date().toLocaleString("en-US", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
     };
     setNotes([...notes, note]);
   };
@@ -45,7 +57,7 @@ function Notes({ selectedGroup }) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <img src={back} alt="press to go back" />
+        <img src={back} alt="press to go back" onClick={goBack} />
         <div
           className={styles.icon}
           style={{
@@ -66,8 +78,12 @@ function Notes({ selectedGroup }) {
       </div>
       <div className={styles.notesSection}>
         {notes.map((note, index) => (
-          <div key={index}>
-            {note.date}: {note.text}
+          <div key={index} style={{ display: "flex" }}>
+            <div className={styles.datetime}>
+              {note.time}
+              <br /> {note.date}
+            </div>
+            <div className={styles.text}>{note.text}</div>
           </div>
         ))}
       </div>
@@ -81,7 +97,7 @@ function Notes({ selectedGroup }) {
           onChange={(e) => {
             setNewNote(e.target.value);
           }}
-          onKeyPress={handleEnterKey}
+          onKeyDown={handleKeyDown}
         />
         <img src={send} alt="send" onClick={handleSave} />
       </div>

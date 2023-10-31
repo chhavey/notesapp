@@ -10,9 +10,16 @@ function Home() {
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [groups, setGroups] = useState([]);
+  const [back, setBack] = useState(false);
+
+  const prevPage = () => {
+    setBack(true);
+    setSelectedGroup(null);
+  };
 
   const onSelectGroup = (item) => {
     setSelectedGroup(item);
+    setBack(false);
   };
 
   const openDialog = () => {
@@ -75,15 +82,16 @@ function Home() {
                   onSelectGroup={onSelectGroup}
                   openDialog={openDialog}
                 />
+
                 <Default />
               </div>
             )}
           </div>
         ) : (
           <div className={styles.mobile}>
-            {selectedGroup ? (
+            {selectedGroup && !back ? (
               <div className={styles.ms}>
-                <Notes selectedGroup={selectedGroup} />
+                <Notes selectedGroup={selectedGroup} goBack={prevPage} />
               </div>
             ) : (
               <div className={styles.ms}>

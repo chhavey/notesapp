@@ -11,7 +11,7 @@ const colors = [
 ];
 
 function Popup({ closeDialog, handleDialogSave }) {
-  const color = "#E8E8E8";
+  const color = "#9A9A9A";
   const [name, setName] = useState("");
   const [selectedColor, setSelectedColor] = useState(null);
 

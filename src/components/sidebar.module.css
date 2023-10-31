@@ -4,7 +4,10 @@
   width: 100vw; /*---responsive---*/
   height: 100vh;
   font-family: "Roboto", sans-serif;
-  padding: 0 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 0;
   background-color: white;
 }
 
@@ -12,6 +15,7 @@
   font-weight: 500;
   font-size: 1.875rem; /*---responsive---*/
   letter-spacing: 0.02em;
+  margin-right: 1rem;
   text-align: left;
 }
 .createGroupBtn em {
@@ -31,12 +35,13 @@
   border-radius: 3rem;
   padding: 0.25rem;
   margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .groupname {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  padding: 0.45em 0;
 }
 
 .icon {
@@ -49,6 +54,7 @@
   color: white;
   font-size: 1.25rem;
   margin-right: 1rem;
+  margin-left: 0.875rem;
 }
 
 .name {
@@ -61,15 +67,24 @@
 
 .ul {
   list-style-type: none;
-  padding: 0;
   text-align: left;
   font-weight: 500;
   letter-spacing: 0.02em;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.selectedNote {
+  background-color: #f7ecdc;
+  border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
 }
 
 ::-webkit-scrollbar {
-  width: 0.35rem;
+  display: none;
 }
 
 @media (min-width: 769px) {

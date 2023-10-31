@@ -31,7 +31,6 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   margin-right: 1rem;
-  background-color: #b38bfa; /*---will be removed---*/
 }
 
 .heading {
@@ -43,8 +42,34 @@
 }
 
 .notesSection {
-  border: 1px solid red;
-  height: 100%;
+  padding: 3rem;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  align-self: flex-start;
+}
+
+.datetime {
+  color: #353535;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin-right: 2rem;
+  width: 15%;
+}
+
+.text {
+  color: black;
+  width: 80%;
+  font-family: "Roboto", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.035em;
+  text-align: left;
 }
 .enterNotesSection {
   display: flex;

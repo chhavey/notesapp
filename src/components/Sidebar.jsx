@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./sidebar.module.css";
 
 function Sidebar({ groupNames, onSelectGroup, openDialog }) {
+  const [selectedNote, setSelectedNote] = useState(null);
+
+  const handleSelect = (item) => {
+    setSelectedNote(item);
+    onSelectGroup(item);
+  };
+
   return (
     <>
       <div className={styles.container}>
@@ -11,7 +18,11 @@ function Sidebar({ groupNames, onSelectGroup, openDialog }) {
         </button>
         <ul className={styles.ul}>
           {groupNames.map((item) => (
-            <li key={item.id} onClick={() => onSelectGroup(item)}>
+            <li
+              key={item.id}
+              onClick={() => handleSelect(item)}
+              className={selectedNote === item ? styles.selectedNote : ""}
+            >
               <div className={styles.groupname}>
                 <div
                   className={styles.icon}
