@@ -48,7 +48,6 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 3rem;
-  align-self: flex-start;
 }
 
 .datetime {

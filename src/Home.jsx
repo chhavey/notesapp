@@ -30,7 +30,7 @@ function Home() {
     setIsDialogOpen(false);
   };
 
-  const handleDialogSave = (name, color, e) => {
+  const handleDialogSave = (name, color) => {
     const newGroup = { id: Date.now(), name, color };
     setGroups((prevGroups) => {
       const updatedGroups = [...prevGroups, newGroup];
